@@ -1,0 +1,24 @@
+ public partial class Window1 : Window
+    {
+        public delegate void TestEventHandler(object sender, String e);
+
+        public event TestEventHandler Testevent;
+        
+
+        public Window1()
+        {
+            InitializeComponent();
+
+            Testevent += Window1_Testevent;
+        }
+
+        private void Window1_Testevent(object sender, string e)
+        {
+            MessageBox.Show(e);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Testevent(sender, "trigger");
+        }
+    }
